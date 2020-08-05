@@ -1,14 +1,4 @@
-class Script {
-  constructor(config) {
-    config = { ...config };
-    this._name = config.name || 'script';
+'use strict';
+const { run } = require('./lib/wsl');
 
-    this.renderName = this.renderName.bind(this);
-  }
-
-  renderName() {
-    return this._name;
-  }
-}
-
-module.exports = Script;
+run('uptime');

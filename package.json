@@ -10,14 +10,18 @@
   "contributors": [
     "Andreas Wehr <iam@grml.in> (https://github.com/grmlin)"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "execa": "^4.0.3",
+    "lodash": "^4.17.19",
+    "ow": "^0.17.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
     "codecov": "latest",
     "cross-env": "latest",
-    "eslint": "6.x",
+    "eslint": "7.6.0",
     "eslint-config-xo-lass": "latest",
     "fixpack": "latest",
     "husky": "latest",
@@ -25,7 +29,8 @@
     "nyc": "latest",
     "remark-cli": "latest",
     "remark-preset-github": "latest",
-    "xo": "0.25"
+    "standard-version": "^8.0.2",
+    "xo": "0.32.1"
   },
   "engines": {
     "node": ">= 10"
@@ -44,7 +49,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "npm run lint:js && npm run lint:md",
-    "lint:js": "xo",
+    "lint:js": "xo --fix",
     "lint:md": "remark . -qfo",
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test ava",
