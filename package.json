@@ -1,0 +1,60 @@
+{
+  "name": "node-wsl",
+  "description": "A wrapper for the Windows Subsystem for Linux (WSL) cli",
+  "version": "1.0.0",
+  "author": "Andreas Wehr <iam@grml.in> (https://github.com/grmlin)",
+  "bugs": {
+    "url": "https://github.com/grmlin/node-wsl/issues",
+    "email": "iam@grml.in"
+  },
+  "contributors": [
+    "Andreas Wehr <iam@grml.in> (https://github.com/grmlin)"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "ava": "latest",
+    "codecov": "latest",
+    "cross-env": "latest",
+    "eslint": "6.x",
+    "eslint-config-xo-lass": "latest",
+    "fixpack": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "nyc": "latest",
+    "remark-cli": "latest",
+    "remark-preset-github": "latest",
+    "xo": "0.25"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "homepage": "https://github.com/grmlin/node-wsl",
+  "keywords": [
+    "windows",
+    "wsl"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grmlin/node-wsl"
+  },
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "lint": "npm run lint:js && npm run lint:md",
+    "lint:js": "xo",
+    "lint:md": "remark . -qfo",
+    "pretest": "npm run lint",
+    "test": "cross-env NODE_ENV=test ava",
+    "test-coverage": "cross-env NODE_ENV=test nyc npm run test"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "xo-lass"
+    ]
+  }
+}
