@@ -18,15 +18,14 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "ava": "latest",
     "codecov": "latest",
     "cross-env": "latest",
     "eslint": "7.6.0",
     "eslint-config-xo-lass": "latest",
     "fixpack": "latest",
     "husky": "latest",
+    "jest": "^26.2.2",
     "lint-staged": "latest",
-    "nyc": "latest",
     "remark-cli": "latest",
     "remark-preset-github": "latest",
     "standard-version": "^8.0.2",
@@ -47,13 +46,12 @@
     "url": "https://github.com/grmlin/node-wsl"
   },
   "scripts": {
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "npm run lint:js && npm run lint:md",
     "lint:js": "xo --fix",
     "lint:md": "remark . -qfo",
     "pretest": "npm run lint",
-    "test": "cross-env NODE_ENV=test ava",
-    "test-coverage": "cross-env NODE_ENV=test nyc npm run test"
+    "test": "cross-env NODE_ENV=test jest",
+    "test-coverage": "cross-env NODE_ENV=test jest --coverage"
   },
   "xo": {
     "prettier": true,

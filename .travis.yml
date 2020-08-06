@@ -7,5 +7,3 @@ node_js:
   - 'node'
 script:
   - npm run test-coverage
-after_success:
-  - npm run coverage
