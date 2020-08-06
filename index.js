@@ -1,4 +1,7 @@
 'use strict';
-const { run } = require('./lib/wsl');
+const { run, exportDistribution } = require('./lib/wsl');
 
-run('uptime');
+module.exports = {
+  run,
+  exportDistribution
+};
