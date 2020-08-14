@@ -2,7 +2,11 @@
   "name": "node-wsl",
   "description": "A wrapper for the Windows Subsystem for Linux (WSL) cli",
   "version": "1.0.0",
-  "author": "Andreas Wehr <iam@grml.in> (https://github.com/grmlin)",
+  "author": {
+    "name": "Andreas Wehr",
+    "email": "iam@grml.lin",
+    "url": "https://github.com/grmlin"
+  },
   "bugs": {
     "url": "https://github.com/grmlin/node-wsl/issues",
     "email": "iam@grml.in"
@@ -11,25 +15,35 @@
     "Andreas Wehr <iam@grml.in> (https://github.com/grmlin)"
   ],
   "dependencies": {
+    "commander": "^6.0.0",
     "execa": "^4.0.3",
     "lodash": "^4.17.19",
-    "ow": "^0.17.0"
+    "ow": "^0.17.0",
+    "terminal-kit": "^1.42.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "codecov": "latest",
     "cross-env": "latest",
-    "eslint": "7.6.0",
-    "eslint-config-xo-lass": "latest",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.0",
     "fixpack": "latest",
     "husky": "latest",
     "jest": "^26.2.2",
     "lint-staged": "latest",
+    "prettier": "^2.0.5",
     "remark-cli": "latest",
     "remark-preset-github": "latest",
-    "standard-version": "^8.0.2",
-    "xo": "0.32.1"
+    "standard-version": "^8.0.2"
   },
   "engines": {
     "node": ">= 10"
@@ -47,17 +61,10 @@
   },
   "scripts": {
     "lint": "npm run lint:js && npm run lint:md",
-    "lint:js": "xo --fix",
+    "lint:js": "eslint",
     "lint:md": "remark . -qfo",
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test jest",
     "test-coverage": "cross-env NODE_ENV=test jest --coverage"
-  },
-  "xo": {
-    "prettier": true,
-    "space": true,
-    "extends": [
-      "xo-lass"
-    ]
   }
 }
