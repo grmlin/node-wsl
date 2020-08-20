@@ -35,7 +35,16 @@ describe('list', () => {
       all: true,
       verbose: true
     });
-    expect(listed.stdout).toBe('wsl.exe --list --all --verbose');
+    expect(listed.stdout).toMatchInlineSnapshot(`
+      "  NAME                   STATE           VERSION
+            * Debian-DEV             Running         2
+              kali-linux             Stopped         2
+              docker-desktop-data    Running         2
+              docker-desktop         Running         2
+              Ubuntu                 Stopped         2
+              Debian                 Running         2
+            "
+    `);
   });
 
   test('throws for impossible argument combinations', async () => {
