@@ -62,9 +62,8 @@
     "url": "https://github.com/grmlin/node-wsl"
   },
   "scripts": {
-    "lint": "npm run lint:js && npm run lint:md",
+    "lint": "npm run lint:js",
     "lint:js": "eslint",
-    "lint:md": "remark . -qfo",
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test jest",
     "test-coverage": "cross-env NODE_ENV=test jest --coverage",
