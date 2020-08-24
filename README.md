@@ -1,6 +1,6 @@
 # node-wsl
 
-[![build status](https://img.shields.io/travis/com/grmlin/node-wsl.svg)](https://travis-ci.com/grmlin/node-wsl)
+[![build status](https://img.shields.io/travis/grmlin/node-wsl.svg)](https://travis-ci.com/grmlin/node-wsl)
 [![code coverage](https://img.shields.io/codecov/c/github/grmlin/node-wsl.svg)](https://codecov.io/gh/grmlin/node-wsl)
 [![code style](https://img.shields.io/badge/code_style-eslint-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)

@@ -26,7 +26,7 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "codecov": "latest",
+    "codecov": "^3.7.2",
     "cross-env": "latest",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
