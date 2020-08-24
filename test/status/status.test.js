@@ -2,7 +2,7 @@
 
 'use strict';
 
-const wslStatus = require('../../lib/status/wslStatus');
+const wslStatus = require('../../lib/status/status');
 
 describe('wslStatus', () => {
   test('returns the current status of the wsl as json', async () => {
@@ -10,42 +10,18 @@ describe('wslStatus', () => {
     // have a look at the execa mock if you wonder where these values come from
     expect(status).toEqual([
       {
-        isDefault: false,
-        isRunning: false,
+        isDefault: true,
+        isRunning: true,
         isStopped: false,
-        name: '*',
-        state: 'Debian-DEV',
-        version: 'Running'
+        name: 'Ubuntu',
+        state: 'Running',
+        version: '2'
       },
       {
         isDefault: false,
         isRunning: false,
         isStopped: true,
         name: 'kali-linux',
-        state: 'Stopped',
-        version: '2'
-      },
-      {
-        isDefault: false,
-        isRunning: true,
-        isStopped: false,
-        name: 'docker-desktop-data',
-        state: 'Running',
-        version: '2'
-      },
-      {
-        isDefault: false,
-        isRunning: true,
-        isStopped: false,
-        name: 'docker-desktop',
-        state: 'Running',
-        version: '2'
-      },
-      {
-        isDefault: false,
-        isRunning: false,
-        isStopped: true,
-        name: 'Ubuntu',
         state: 'Stopped',
         version: '2'
       },

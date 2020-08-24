@@ -37,12 +37,9 @@ describe('list', () => {
     });
     expect(listed.stdout).toMatchInlineSnapshot(`
       "  NAME                   STATE           VERSION
-            * Debian-DEV             Running         2
-              kali-linux             Stopped         2
-              docker-desktop-data    Running         2
-              docker-desktop         Running         2
-              Ubuntu                 Stopped         2
-              Debian                 Running         2
+      * Ubuntu                 Running         2
+        kali-linux             Stopped         2
+        Debian                 Running         2
             "
     `);
   });
