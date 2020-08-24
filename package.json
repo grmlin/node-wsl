@@ -65,6 +65,7 @@
     "lint": "npm run lint:js",
     "lint:js": "eslint",
     "pretest": "npm run lint",
+    "release": "npm run pretest && npm run test && standard-version",
     "test": "cross-env NODE_ENV=test jest",
     "test-coverage": "cross-env NODE_ENV=test jest --coverage",
     "test-watch": "cross-env NODE_ENV=test jest --watch"
