@@ -41,6 +41,7 @@
     "fixpack": "latest",
     "husky": "latest",
     "jest": "^26.2.2",
+    "jest-mock-console": "^1.0.1",
     "lint-staged": "latest",
     "prettier": "^2.0.5",
     "remark-cli": "latest",
