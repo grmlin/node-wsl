@@ -61,7 +61,7 @@ yarn add node-wsl
 ## Usage
 
 ```js
-const { status } = require('node-wsl);
+const { status } = require('node-wsl');
 
 const status = await status();
 assert.deepEqual(status, [
@@ -128,7 +128,7 @@ Not ideal, but there is currently no other way to get a list of wsl distros used
 
 ```javascript
 const assert = require('assert').strict;
-const { status } = require('node-wsl);
+const { status } = require('node-wsl');
 
 const status = await status();
 const rawList = await list({
@@ -197,11 +197,13 @@ const { run } = require('node-wsl');
 
 let uptime = await run('uptime'); 
 // "wsl.exe uptime"
-console.log(uptime.stdout); // 10:26:19 up 2 days,  1:43,  0 users,  load average: 1.50, 1.54, 0.77
+console.log(uptime.stdout); 
+// 10:26:19 up 2 days,  1:43,  0 users,  load average: 1.50, 1.54, 0.77
 
 uptime = await run('uptime', { distribution: 'Debian', user: 'root' }); 
 //  'wsl.exe --distribution Debian --user root uptime'
-console.log(uptime.stdout); // 10:26:19 up 2 days,  1:43,  0 users,  load average: 1.50, 1.54, 0.77
+console.log(uptime.stdout); 
+// 10:26:19 up 2 days,  1:43,  0 users,  load average: 1.50, 1.54, 0.77
 ```
 
 
@@ -339,7 +341,7 @@ Sets the version as the default for all newly installed distributions.
 #### Usage
 
 ```javascript
-const { setDefaultVersion } = require('node-wsl);
+const { setDefaultVersion } = require('node-wsl');
 
 await setDefaultVersion(2); // the version of newly installed distros will be 2 now
 ```
