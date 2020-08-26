@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/grmlin/node-wsl/compare/v1.0.0...v1.0.1) (2020-08-26)
+
+
+### Bug Fixes
+
+* use correct import ([9ae6176](https://github.com/grmlin/node-wsl/commit/9ae6176af1460a0cf1e34eafaa5da445f1e7f504))
+
 ## 1.0.0 (2020-08-24)
 
 

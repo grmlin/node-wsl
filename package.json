@@ -1,7 +1,7 @@
 {
   "name": "node-wsl",
   "description": "A wrapper for the Windows Subsystem for Linux (WSL) cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Andreas Wehr",
     "email": "iam@grml.lin",
