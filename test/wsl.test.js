@@ -3,7 +3,6 @@
 'use strict';
 
 const execa = require('execa');
-const commandExists = require('command-exists');
 const wsl = require('../lib/wsl');
 
 describe('wsl', () => {
