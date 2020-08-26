@@ -11,7 +11,7 @@ const setVersion = require('./lib/commands/setVersion');
 const shutdown = require('./lib/commands/shutdown');
 const terminate = require('./lib/commands/terminate');
 const unregister = require('./lib/commands/unregister');
-const { status } = require('./lib/status/status');
+const status = require('./lib/status/status');
 
 exports.wsl = wsl;
 exports.run = run;
