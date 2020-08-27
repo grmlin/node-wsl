@@ -57,7 +57,7 @@
     "wsl"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/grmlin/node-wsl"
@@ -70,5 +70,6 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test-coverage": "cross-env NODE_ENV=test jest --coverage",
     "test-watch": "cross-env NODE_ENV=test jest --watch"
-  }
+  },
+  "types": "./index.d.ts"
 }

@@ -12,25 +12,25 @@ describe('statusParser', () => {
           `)
     ).toEqual([
       {
-        isDefault: true,
-        isRunning: true,
-        isStopped: false,
+        default: true,
+        running: true,
+        stopped: false,
         name: 'Ubuntu',
         state: 'Running',
         version: '2'
       },
       {
-        isDefault: false,
-        isRunning: false,
-        isStopped: true,
+        default: false,
+        running: false,
+        stopped: true,
         name: 'kali-linux',
         state: 'Stopped',
         version: '2'
       },
       {
-        isDefault: false,
-        isRunning: true,
-        isStopped: false,
+        default: false,
+        running: true,
+        stopped: false,
         name: 'Debian',
         state: 'Running',
         version: '2'

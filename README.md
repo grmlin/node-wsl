@@ -1,6 +1,6 @@
 # node-wsl
 
-[![build status](https://img.shields.io/travis/grmlin/node-wsl.svg)](https://travis-ci.com/grmlin/node-wsl)
+![Node.js CI](https://github.com/grmlin/node-wsl/workflows/Node.js%20CI/badge.svg?branch=master)
 [![code coverage](https://img.shields.io/codecov/c/github/grmlin/node-wsl.svg)](https://codecov.io/gh/grmlin/node-wsl)
 [![code style](https://img.shields.io/badge/code_style-eslint-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -69,25 +69,25 @@ assert.deepEqual(status, [
     name: 'Debian',
     state: 'Running',
     version: '2',
-    isDefault: true,
-    isRunning: true,
-    isStopped: false
+    default: true,
+    running: true,
+    stopped: false
   },
   {
     name: 'kali-linux',
     state: 'Stopped',
     version: '2',
-    isDefault: false,
-    isRunning: false,
-    isStopped: true
+    default: false,
+    running: false,
+    stopped: true
   },
   {
     name: 'Ubuntu',
     state: 'Stopped',
     version: '2',
-    isDefault: false,
-    isRunning: false,
-    isStopped: true
+    default: false,
+    running: false,
+    stopped: true
   }
 ]);
 
@@ -118,9 +118,9 @@ Not ideal, but there is currently no other way to get a list of wsl distros used
   name: String,
   state: String,
   version: String,
-  isDefault: Boolean,
-  isRunning: Boolean,
-  isStopped: Boolean,
+  default: Boolean,
+  running: Boolean,
+  stopped: Boolean,
 }
 ```
 
@@ -149,25 +149,25 @@ assert.deepEqual(status, [
     name: 'Debian',
     state: 'Running',
     version: '2',
-    isDefault: true,
-    isRunning: true,
-    isStopped: false
+    default: true,
+    running: true,
+    stopped: false
   },
   {
     name: 'kali-linux',
     state: 'Stopped',
     version: '2',
-    isDefault: false,
-    isRunning: false,
-    isStopped: true
+    default: false,
+    running: false,
+    stopped: true
   },
   {
     name: 'Ubuntu',
     state: 'Stopped',
     version: '2',
-    isDefault: false,
-    isRunning: false,
-    isStopped: true
+    default: false,
+    running: false,
+    stopped: true
   }
 ]);
 ```
@@ -195,14 +195,14 @@ Run a command inside a distro with `wsl.exe`
 ```javascript
 const { run } = require('node-wsl');
 
-let uptime = await run('uptime'); 
+let uptime = await run('uptime');
 // "wsl.exe uptime"
-console.log(uptime.stdout); 
+console.log(uptime.stdout);
 // 10:26:19 up 2 days,  1:43,  0 users,  load average: 1.50, 1.54, 0.77
 
-uptime = await run('uptime', { distribution: 'Debian', user: 'root' }); 
+uptime = await run('uptime', { distribution: 'Debian', user: 'root' });
 //  'wsl.exe --distribution Debian --user root uptime'
-console.log(uptime.stdout); 
+console.log(uptime.stdout);
 // 10:26:19 up 2 days,  1:43,  0 users,  load average: 1.50, 1.54, 0.77
 ```
 
@@ -229,7 +229,7 @@ Export a distribution into a file
 ```javascript
 const { exportDistribution } = require('node-wsl');
 
-const exported = await exportDistribution('Ubuntu', '/home/user/ubuntu.tar'); 
+const exported = await exportDistribution('Ubuntu', '/home/user/ubuntu.tar');
 // 'wsl.exe --export Ubuntu /home/user/ubuntu.tar'
 ```
 
@@ -250,7 +250,7 @@ const exported = await exportDistribution('Ubuntu', '/home/user/ubuntu.tar');
 | `fileName`        | string   |         | path to the exported distribution `.tar`. The filename can be "-" for standard input. |
 | `args`            | [object] | `{}`    | arguments passed to `wsl.exe`                                                         |
 | `args.version`    | [number] |         | version of the new distribution                                                       |
-| `options`         | [object] | `{}`    | options passed to `execa`                                                             |
+| `options`         | [execa.Options] | `{}`    | options passed to `execa`                                                             |
 
 **Returns**: [Promise / `child_process`][execa-documentation] from execa
 
@@ -259,7 +259,7 @@ const exported = await exportDistribution('Ubuntu', '/home/user/ubuntu.tar');
 ```javascript
 const { importDistribution } = require('node-wsl');
 
-const imported = await importDistribution('Debian', 'path/to/distribution', 'path/to/my/backup.tar'); 
+const imported = await importDistribution('Debian', 'path/to/distribution', 'path/to/my/backup.tar');
 // wsl.exe --import Debian path/to/distribution path/to/my/backup.tar
 
 ```
@@ -282,7 +282,7 @@ Some combinations of command line arguments don't work and will throw an error
 | `args.running` | [boolean] |         | List only distributions that are currently running |
 | `args.quiet`   | [boolean] |         | shows distribution names only                      |
 | `args.verbose` | [boolean] |         | shows detailed distribution informations           |
-| `options`      | [object]  | `{}`    | options passed to `execa`                          |
+| `options`      | [execa.Options]  | `{}`    | options passed to `execa`                          |
 
 **Returns**: [Promise / `child_process`][execa-documentation] from execa
 
@@ -315,7 +315,7 @@ Sets the distribution as the default.
 | parameter      | type     | default | description               |
 | -------------- | -------- | ------- | ------------------------- |
 | `distribution` | string   |         | name of the distribution  |
-| `options`      | [object] | `{}`    | options passed to `execa` |
+| `options`      | [execa.Options] | `{}`    | options passed to `execa` |
 
 **Returns**: [Promise / `child_process`][execa-documentation] from execa
 
@@ -334,7 +334,7 @@ Sets the version as the default for all newly installed distributions.
 | parameter | type     | default | description               |
 | --------- | -------- | ------- | ------------------------- |
 | `version` | 1 \| 2   |         | version to set            |
-| `options` | [object] | `{}`    | options passed to `execa` |
+| `options` | [execa.Options] | `{}`    | options passed to `execa` |
 
 **Returns**: [Promise / `child_process`][execa-documentation] from execa
 
@@ -356,7 +356,7 @@ Sets the wsl version of an already installed version.
 | -------------- | -------- | ------- | ------------------------- |
 | `distribution` | string   |         | name of the distribution  |
 | `version`      | 1 \| 2   |         | version to set            |
-| `options`      | [object] | `{}`    | options passed to `execa` |
+| `options`      | [execa.Options] | `{}`    | options passed to `execa` |
 
 **Returns**: [Promise / `child_process`][execa-documentation] from execa
 
@@ -376,7 +376,7 @@ Shuts down all running distribution and the virtual WSL utility machine immediat
 
 | parameter | type     | default | description               |
 | --------- | -------- | ------- | ------------------------- |
-| `options` | [object] | `{}`    | options passed to `execa` |
+| `options` | [execa.Options] | `{}`    | options passed to `execa` |
 
 **Returns**: [Promise / `child_process`][execa-documentation] from execa
 
@@ -395,7 +395,7 @@ await shutdown(); // turn it off already
 | parameter      | type     | default | description               |
 | -------------- | -------- | ------- | ------------------------- |
 | `distribution` | string   |         | name of the distribution  |
-| `options`      | [object] | `{}`    | options passed to `execa` |
+| `options`      | [execa.Options] | `{}`    | options passed to `execa` |
 
 **Returns**: [Promise / `child_process`][execa-documentation] from execa
 
@@ -416,7 +416,7 @@ Unregister the selected distribution
 | parameter      | type     | default | description               |
 | -------------- | -------- | ------- | ------------------------- |
 | `distribution` | string   |         | name of the distribution  |
-| `options`      | [object] | `{}`    | options passed to `execa` |
+| `options`      | [execa.Options] | `{}`    | options passed to `execa` |
 
 **Returns**: [Promise / `child_process`][execa-documentation] from execa
 
@@ -453,7 +453,7 @@ low level wrapper for `wsl.exe` that creates and executes a wsl call using [`exe
 
 ## FAQ
 
-* **WSL fails because a path/file was not found**  
+* **WSL fails because a path/file was not found**
     That probably if you some form of variable substitution in a path, eg. `~/backup.tar`, without specifying a shell for `execa`. Check the [execa documentation](https://github.com/sindresorhus/execa/blob/master/readme.md#execafile-arguments-options) for a detailed explanation.
 
 
@@ -471,7 +471,7 @@ low level wrapper for `wsl.exe` that creates and executes a wsl call using [`exe
 [MIT](LICENSE) © [Andreas Wehr](https://github.com/grmlin)
 
 
-## 
+##
 
 [wsl]: https://docs.microsoft.com/windows/wsl/
 

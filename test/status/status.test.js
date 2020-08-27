@@ -14,25 +14,25 @@ const { parse } = require('../../lib/status/statusParser');
 describe('status', () => {
   const data = [
     {
-      isDefault: true,
-      isRunning: true,
-      isStopped: false,
+      default: true,
+      Running: true,
+      stopped: false,
       name: 'Ubuntu',
       state: 'Running',
       version: '2'
     },
     {
-      isDefault: false,
-      isRunning: false,
-      isStopped: true,
+      default: false,
+      Running: false,
+      stopped: true,
       name: 'kali-linux',
       state: 'Stopped',
       version: '2'
     },
     {
-      isDefault: false,
-      isRunning: true,
-      isStopped: false,
+      default: false,
+      Running: true,
+      stopped: false,
       name: 'Debian',
       state: 'Running',
       version: '2'
@@ -45,25 +45,25 @@ describe('status', () => {
     // have a look at the execa mock if you wonder where these values come from
     expect(result).toEqual([
       {
-        isDefault: true,
-        isRunning: true,
-        isStopped: false,
+        default: true,
+        Running: true,
+        stopped: false,
         name: 'Ubuntu',
         state: 'Running',
         version: '2'
       },
       {
-        isDefault: false,
-        isRunning: false,
-        isStopped: true,
+        default: false,
+        Running: false,
+        stopped: true,
         name: 'kali-linux',
         state: 'Stopped',
         version: '2'
       },
       {
-        isDefault: false,
-        isRunning: true,
-        isStopped: false,
+        default: false,
+        Running: true,
+        stopped: false,
         name: 'Debian',
         state: 'Running',
         version: '2'
