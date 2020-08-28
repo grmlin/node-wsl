@@ -1,7 +1,7 @@
-import * as execa from "execa";
+import * as execa from 'execa';
 
 /**
- * creates and executes a wsl call using `execa`
+ * Creates and executes a wsl call using `execa`
  *
  * @async
  *
@@ -14,20 +14,17 @@ import * as execa from "execa";
  * @param {execa.Options} [options={}] options passed to `execa`
  * @returns {execa.ExecaChildProcess} execa child_process instance
  */
-export function wsl(
-  args: string[],
-  options?: execa.Options
-): execa.ExecaChildProcess;
+export function wsl(args: string[], options?: execa.Options): execa.ExecaChildProcess;
 
 interface RunArguments {
-  /**
-   * Run the specified distribution. If missing the default distribution will be used
-   */
-  distribution?: string;
-  /**
-   * Run as the specified user.
-   */
-  user?: string;
+    /**
+     * Run the specified distribution. If missing the default distribution will be used
+     */
+    distribution?: string;
+    /**
+     * Run as the specified user.
+     */
+    user?: string;
 }
 
 /**
@@ -45,11 +42,7 @@ interface RunArguments {
  * @param {execa.Options} [options={}] options passed to `execa`
  * @returns {execa.ExecaChildProcess} execa child_process instance
  */
-export function run(
-  command: string,
-  args?: RunArguments,
-  options?: execa.Options
-): execa.ExecaChildProcess;
+export function run(command: string, args?: RunArguments, options?: execa.Options): execa.ExecaChildProcess;
 
 /**
  * Export a distribution into a file
@@ -64,16 +57,16 @@ export function run(
  *
  */
 export function exportDistribution(
-  distribution: string,
-  fileName: string,
-  options?: execa.Options
+    distribution: string,
+    fileName: string,
+    options?: execa.Options,
 ): execa.ExecaChildProcess;
 
 interface ImportArguments {
-  /**
-   * version of the new distribution
-   */
-  version?: 1 | 2;
+    /**
+     * Version of the new distribution
+     */
+    version?: 1 | 2;
 }
 
 /**
@@ -92,30 +85,30 @@ interface ImportArguments {
  *
  */
 export function importDistribution(
-  distribution: string,
-  installLocation: string,
-  fileName: string,
-  args?: ImportArguments,
-  options?: execa.Options
+    distribution: string,
+    installLocation: string,
+    fileName: string,
+    args?: ImportArguments,
+    options?: execa.Options,
 ): execa.ExecaChildProcess;
 
 interface ListArguments {
-  /**
-   * List all distributions
-   */
-  all?: boolean;
-  /**
-   * List only distributions that are currently running.
-   */
-  running?: boolean;
-  /**
-   * shows distribution names only
-   */
-  quiet?: boolean;
-  /**
-   * shows detailed distribution information
-   */
-  verbose?: boolean;
+    /**
+     * List all distributions
+     */
+    all?: boolean;
+    /**
+     * List only distributions that are currently running.
+     */
+    running?: boolean;
+    /**
+     * Shows distribution names only
+     */
+    quiet?: boolean;
+    /**
+     * Shows detailed distribution information
+     */
+    verbose?: boolean;
 }
 
 /**
@@ -144,10 +137,7 @@ interface ListArguments {
  * @param {execa.Options} [options={}] options passed to `execa`
  * @returns {execa.ExecaChildProcess} execa child_process instance
  */
-export function list(
-  args?: ListArguments,
-  options?: execa.Options
-): execa.ExecaChildProcess;
+export function list(args?: ListArguments, options?: execa.Options): execa.ExecaChildProcess;
 
 /**
  *
@@ -161,10 +151,7 @@ export function list(
  * @param {execa.Options} [options={}] options passed to `execa`
  * @returns {execa.ExecaChildProcess} execa child_process instance
  */
-export function setDefault(
-  distribution: string,
-  options?: execa.Options
-): execa.ExecaChildProcess;
+export function setDefault(distribution: string, options?: execa.Options): execa.ExecaChildProcess;
 
 /**
  *
@@ -178,10 +165,7 @@ export function setDefault(
  * @param {execa.Options} [options={}] options passed to `execa`
  * @returns {execa.ExecaChildProcess} execa child_process instance
  */
-export function setDefaultVersion(
-  version: 1 | 2,
-  options?: execa.Options
-): execa.ExecaChildProcess;
+export function setDefaultVersion(version: 1 | 2, options?: execa.Options): execa.ExecaChildProcess;
 
 /**
  *
@@ -196,11 +180,7 @@ export function setDefaultVersion(
  * @param {execa.Options} [options={}] options passed to `execa`
  * @returns {execa.ExecaChildProcess} execa child_process instance
  */
-export function setVersion(
-  distribution: string,
-  version: 1 | 2,
-  options?: execa.Options
-): execa.ExecaChildProcess;
+export function setVersion(distribution: string, version: 1 | 2, options?: execa.Options): execa.ExecaChildProcess;
 
 /**
  *
@@ -226,10 +206,7 @@ export function shutdown(options?: execa.Options): execa.ExecaChildProcess;
  * @param {execa.Options} [options={}] options passed to `execa`
  * @returns {execa.ExecaChildProcess} execa child_process instance
  */
-export function terminate(
-  distribution: string,
-  options?: execa.Options
-): execa.ExecaChildProcess;
+export function terminate(distribution: string, options?: execa.Options): execa.ExecaChildProcess;
 
 /**
  *
@@ -242,69 +219,66 @@ export function terminate(
  * @param {execa.Options} [options={}] options passed to `execa`
  * @returns {execa.ExecaChildProcess} execa child_process instance
  */
-export function unregister(
-  distribution: string,
-  options?: execa.Options
-): execa.ExecaChildProcess;
+export function unregister(distribution: string, options?: execa.Options): execa.ExecaChildProcess;
 
 /**
- * status of a distribution
+ * Status of a distribution
  */
 export interface WslDistributionStatus {
-  /**
-   * the distribution name
-   */
-  name: string;
-  /**
-   * current state of the distribution (Running, Stopped)
-   */
-  state: string;
-  /**
-   * the distributions wsl version
-   */
-  version: 1 | 2;
-  /**
-   * true if it's the default distribution
-   */
-  default: boolean;
-  /**
-   * true if the distribution is currently running
-   */
-  running: boolean;
-  /**
-   * true if the distribution is currently stopped
-   */
-  stopped: boolean;
+    /**
+     * The distribution name
+     */
+    name: string;
+    /**
+     * Current state of the distribution (Running, Stopped)
+     */
+    state: string;
+    /**
+     * The distributions wsl version
+     */
+    version: 1 | 2;
+    /**
+     * True if it's the default distribution
+     */
+    default: boolean;
+    /**
+     * True if the distribution is currently running
+     */
+    running: boolean;
+    /**
+     * True if the distribution is currently stopped
+     */
+    stopped: boolean;
 }
 
 /**
- * wsl status object
+ * Wsl status object
  */
 export interface WslStatus {
-  /**
-   * list of distribution status
-   */
-  distributions: WslDistributionStatus[];
-  /**
-   * total number of distributions found
-   */
-  total: number;
-  /**
-   * number of running distributions
-   */
-  running: number;
-  /**
-   * number of stopped distributions
-   */
-  stopped: number;
-  /**
-   * name of the default distribution
-   */
-  default: string;
+    /**
+     * List of distribution status
+     */
+    distributions: WslDistributionStatus[];
+    /**
+     * Total number of distributions found
+     */
+    total: number;
+    /**
+     * Number of running distributions
+     */
+    running: number;
+    /**
+     * Number of stopped distributions
+     */
+    stopped: number;
+    /**
+     * Name of the default distribution
+     */
+    default: string;
 }
 
 /**
- * utility function to get the wsl list generated from
+ * Utility function to get the wsl list generated from
  * `wsl.exe --list --verbose --all` as a parsed list of
  * status objects
  *

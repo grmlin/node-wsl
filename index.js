@@ -1,17 +1,15 @@
-'use strict';
-
-const wsl = require('./lib/wsl');
-const run = require('./lib/commands/run');
-const exportDistribution = require('./lib/commands/exportDistribution');
-const importDistribution = require('./lib/commands/importDistribution');
-const list = require('./lib/commands/list');
-const setDefault = require('./lib/commands/setDefault');
-const setDefaultVersion = require('./lib/commands/setDefaultVersion');
-const setVersion = require('./lib/commands/setVersion');
-const shutdown = require('./lib/commands/shutdown');
-const terminate = require('./lib/commands/terminate');
-const unregister = require('./lib/commands/unregister');
-const status = require('./lib/status/status');
+const wsl = require('./lib.old/wsl');
+const run = require('./lib.old/commands/run');
+const exportDistribution = require('./lib.old/commands/exportDistribution');
+const importDistribution = require('./lib.old/commands/importDistribution');
+const list = require('./lib.old/commands/list');
+const setDefault = require('./lib.old/commands/setDefault');
+const setDefaultVersion = require('./lib.old/commands/setDefaultVersion');
+const setVersion = require('./lib.old/commands/setVersion');
+const shutdown = require('./lib.old/commands/shutdown');
+const terminate = require('./lib.old/commands/terminate');
+const unregister = require('./lib.old/commands/unregister');
+const status = require('./lib.old/status/status');
 
 exports.wsl = wsl;
 exports.run = run;

@@ -15,6 +15,8 @@
     "Andreas Wehr <iam@grml.in> (https://github.com/grmlin)"
   ],
   "dependencies": {
+    "@types/command-exists": "^1.2.0",
+    "@types/lodash": "^4.14.160",
     "command-exists": "^1.2.9",
     "commander": "^6.0.0",
     "eol": "^0.9.1",
@@ -24,29 +26,26 @@
     "terminal-kit": "^1.42.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "latest",
-    "@commitlint/config-conventional": "latest",
+    "@types/jest": "^26.0.10",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
     "codecov": "^3.7.2",
     "cross-env": "latest",
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-node": "^4.1.0",
+    "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.5",
-    "eslint-plugin-react-hooks": "^4.0.0",
-    "fixpack": "latest",
-    "husky": "latest",
-    "jest": "^26.2.2",
+    "jest": "^26.4.2",
     "jest-mock-console": "^1.0.1",
-    "lint-staged": "latest",
-    "prettier": "^2.0.5",
-    "remark-cli": "latest",
-    "remark-preset-github": "latest",
-    "standard-version": "^8.0.2"
+    "prettier": "^2.1.1",
+    "rollup": "^2.26.6",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "standard-version": "^8.0.2",
+    "ts-jest": "^26.3.0",
+    "typedoc": "^0.19.0",
+    "typescript": "^4.0.2"
   },
   "engines": {
     "node": ">= 10"
@@ -57,19 +56,24 @@
     "wsl"
   ],
   "license": "MIT",
-  "main": "./index.js",
+  "main": "./lib/index.js",
+  "module": "./lib/index.es.js",
+  "jsnext:main": "./lib/index.es.js",
+  "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/grmlin/node-wsl"
   },
   "scripts": {
-    "lint": "npm run lint:js",
-    "lint:js": "eslint",
+    "build": "rollup -c",
     "pretest": "npm run lint",
-    "release": "npm run pretest && npm run test && standard-version",
     "test": "cross-env NODE_ENV=test jest --coverage",
-    "test-coverage": "cross-env NODE_ENV=test jest --coverage",
-    "test-watch": "cross-env NODE_ENV=test jest --watch"
+    "lint": "eslint '*/**/*.{js,ts,tsx}'",
+    "release": "npm run pretest && npm run test && standard-version",
+    "test-watch": "cross-env NODE_ENV=test jest --watch",
+    "docs": "typedoc source"
   },
-  "types": "./index.d.ts"
+  "files": [
+    "lib"
+  ]
 }

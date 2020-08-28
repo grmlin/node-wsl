@@ -1,0 +1,6 @@
+{
+  "inputFiles": ["./source"],
+  "name": "node-wsl",
+  "includeVersion": true,
+  "readme": "README.md"
+}
