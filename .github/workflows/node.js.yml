@@ -23,8 +23,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm test.old
+      - run: npm ci -- --coverage
+      - run: npm test
       - name: Codecov
         # You may pin to the exact commit or the version.
         # uses: codecov/codecov-action@6004246f47ab62d32be025ce173b241cd84ac58e
