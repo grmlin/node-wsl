@@ -14,7 +14,3 @@ export { unregister } from './commands/unregister';
 
 // status
 export { status } from './status/status';
-
-// types
-export { WslStatus } from './status/statusFactory';
-export { DistributionStatus } from './status/statusParser';
