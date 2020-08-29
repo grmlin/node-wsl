@@ -113,8 +113,7 @@ assert.deepEqual(status, {
 
 ## API
 
-> :warning: **execa does not use a shell by default. So features like variable substitution will not work without specifying a shell**
-
+> ⚠️ **execa does not use a shell by default. So features like variable substitution will not work without specifying a shell**
 
 
 
