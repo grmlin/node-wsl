@@ -66,11 +66,11 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "prepack": "npm build",
     "pretest": "npm run lint",
-    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test": "cross-env NODE_ENV=test jest",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",
     "release": "npm run pretest && npm run test && standard-version",
-    "test-watch": "cross-env NODE_ENV=test jest --watch",
     "docs": "typedoc source"
   },
   "files": [
