@@ -1,16 +1,19 @@
 /** @ignore */ /** */
 
 // commands
-export { wsl } from './wsl';
-export { exportDistribution } from './commands/exportDistribution';
-export { importDistribution } from './commands/importDistribution';
-export { list } from './commands/list';
-export { run } from './commands/run';
-export { setDefault } from './commands/setDefault';
-export { setVersion } from './commands/setVersion';
-export { shutdown } from './commands/shutdown';
-export { terminate } from './commands/terminate';
-export { unregister } from './commands/unregister';
+export * from './wsl';
+export * from './commands/exportDistribution';
+export * from './commands/importDistribution';
+export * from './commands/list';
+export * from './commands/run';
+export * from './commands/setDefault';
+export * from './commands/setVersion';
+export * from './commands/shutdown';
+export * from './commands/terminate';
+export * from './commands/unregister';
 
 // status
-export { status } from './status/status';
+export * from './status/status';
+
+// types
+export * from './types';

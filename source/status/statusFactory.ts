@@ -1,38 +1,4 @@
-import { DistributionStatus } from './statusParser';
-
-/**
- * Wsl status object
- */
-export interface WslStatus {
-  /**
-   * List of distribution status
-   */
-  distributions: DistributionStatus[];
-  /**
-   * List of running distributions
-   */
-  runningDistributions: DistributionStatus[];
-  /**
-   * list of stopped distributions
-   */
-  stoppedDistributions: DistributionStatus[];
-  /**
-   * default distribution
-   */
-  defaultDistribution?: DistributionStatus;
-  /**
-   * Total number of distributions found
-   */
-  total: number;
-  /**
-   * Number of running distributions
-   */
-  running: number;
-  /**
-   * Number of stopped distributions
-   */
-  stopped: number;
-}
+import { DistributionStatus, WslStatus } from '../types';
 
 /**
  * Creates the full status object of the wsl installation

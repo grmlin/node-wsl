@@ -7,5 +7,6 @@
   "xo.enable": true,
   "xo.format.enable": true,
   "debug.node.autoAttach": "on",
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "files.eol": "\n"
 }

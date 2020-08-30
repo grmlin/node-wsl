@@ -1,6 +1,7 @@
 import eol from 'eol';
 import isString from 'lodash/isString';
 import isObject from 'lodash/isObject';
+import { DistributionStatus } from '../types';
 
 enum Columns {
   DEFAULT = 0,
@@ -11,36 +12,6 @@ enum Columns {
 enum DistibutionState {
   RUNNING = 'Running',
   STOPPED = 'Stopped',
-}
-
-/**
- * Status of a distribution
- */
-export interface DistributionStatus {
-  /**
-   * The distribution name
-   */
-  name: string;
-  /**
-   * Current state of the distribution (Running, Stopped)
-   */
-  state: string;
-  /**
-   * The distributions wsl version
-   */
-  version: string;
-  /**
-   * True if it's the default distribution
-   */
-  default: boolean;
-  /**
-   * True if the distribution is currently running
-   */
-  running: boolean;
-  /**
-   * True if the distribution is currently stopped
-   */
-  stopped: boolean;
 }
 
 /**

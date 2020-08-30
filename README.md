@@ -15,7 +15,7 @@
 
 You'll need Windows with WSL 2 to use this library. `node-wsl` uses `wsl.exe` under the hood.
 
-> **:warning: if Microsoft changes the `wsl.exe` interface with a future update, this package will probly break!**
+> **⚠️ if Microsoft changes the `wsl.exe` interface with a future update, this package will probly break!**
 
 [npm][]:
 

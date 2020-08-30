@@ -1,6 +1,7 @@
 import { list } from '../commands/list';
 import { parse } from './statusParser';
-import { WslStatus, createStatus } from './statusFactory';
+import { createStatus } from './statusFactory';
+import { WslStatus } from '../types';
 
 /**
  * utility function to get the wsl list generated from
