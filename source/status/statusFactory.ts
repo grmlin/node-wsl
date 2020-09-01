@@ -14,6 +14,7 @@ export const createStatus = (distributions: DistributionStatus[]): null | WslSta
   const runningDistributions = distributions.filter((dist) => dist.running);
   const stoppedDistributions = distributions.filter((dist) => dist.stopped);
   const defaultDistribution = distributions.find((dist) => dist.default);
+  const createdAt = new Date();
   return {
     distributions,
     runningDistributions,
@@ -22,5 +23,6 @@ export const createStatus = (distributions: DistributionStatus[]): null | WslSta
     total: distributions.length,
     running: runningDistributions.length,
     stopped: stoppedDistributions.length,
+    createdAt: createdAt.toISOString(),
   };
 };

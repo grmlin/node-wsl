@@ -60,4 +60,22 @@ export interface WslStatus {
    * Number of stopped distributions
    */
   stopped: number;
+  /**
+   * timestamp of the status creation. String returned from `Date.toISOString()`
+   */
+  createdAt: string;
+}
+
+/**
+ * current state of a distribution
+ */
+export enum DistributionState {
+  /**
+   * Up and running
+   */
+  RUNNING = 'Running',
+  /**
+   * stopped
+   */
+  STOPPED = 'Stopped',
 }
