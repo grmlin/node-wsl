@@ -34,6 +34,7 @@
     "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "git-branch-is": "^4.0.0",
     "jest": "^26.4.2",
     "jest-mock-console": "^1.0.1",
     "mockdate": "^3.0.2",
@@ -67,7 +68,8 @@
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test jest",
     "lint": "eslint .",
-    "release": "npm run test && standard-version",
+    "prerelease": "git-branch-is master",
+    "release": "standard-version",
     "docs": "typedoc source"
   },
   "files": [
