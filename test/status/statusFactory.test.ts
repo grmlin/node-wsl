@@ -1,6 +1,13 @@
+import MockDate from 'mockdate';
 import { createStatus } from '../../source/status/statusFactory';
 
 describe('statusFactory', () => {
+  beforeEach(() => {
+    MockDate.set('2000-01-01');
+  });
+  afterAll(() => {
+    MockDate.reset();
+  });
   test('creates a status object', () => {
     const status = createStatus([
       {
@@ -29,6 +36,7 @@ describe('statusFactory', () => {
       },
     ]);
     expect(status).toEqual({
+      createdAt: '2000-01-01T00:00:00.000Z',
       distributions: [
         {
           default: true,
@@ -125,6 +133,7 @@ describe('statusFactory', () => {
       },
     ]);
     expect(status).toEqual({
+      createdAt: '2000-01-01T00:00:00.000Z',
       distributions: [
         {
           default: false,

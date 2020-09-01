@@ -1,3 +1,4 @@
+import MockDate from 'mockdate';
 import { mocked } from 'ts-jest/utils';
 
 jest.mock('../../source/status/statusParser', () => ({
@@ -12,6 +13,12 @@ import { status } from '../../source/status/status';
 import { parse } from '../../source/status/statusParser';
 
 describe('status', () => {
+  beforeEach(() => {
+    MockDate.set('2000-01-01');
+  });
+  afterAll(() => {
+    MockDate.reset();
+  });
   const data = [
     {
       default: true,
@@ -44,6 +51,7 @@ describe('status', () => {
     const result = await status();
     // have a look at the execa mock if you wonder where these values come from
     expect(result).toEqual({
+      createdAt: '2000-01-01T00:00:00.000Z',
       defaultDistribution: {
         default: true,
         name: 'Ubuntu',
