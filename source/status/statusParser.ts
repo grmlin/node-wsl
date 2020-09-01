@@ -1,17 +1,13 @@
 import eol from 'eol';
 import isString from 'lodash/isString';
 import isObject from 'lodash/isObject';
-import { DistributionStatus } from '../types';
+import { DistributionStatus, DistributionState } from '../types';
 
 enum Columns {
   DEFAULT = 0,
   NAME = 1,
   STATE = 2,
   VERSION = 3,
-}
-enum DistibutionState {
-  RUNNING = 'Running',
-  STOPPED = 'Stopped',
 }
 
 /**
@@ -34,8 +30,8 @@ export const parse = (listResponse: string): DistributionStatus[] => {
       const defaultDist = columns[Columns.DEFAULT].length > 0;
       const name = columns[Columns.NAME];
       const state = columns[Columns.STATE];
-      const running = state === DistibutionState.RUNNING;
-      const stopped = state === DistibutionState.STOPPED;
+      const running = state === DistributionState.RUNNING;
+      const stopped = state === DistributionState.STOPPED;
       const version = columns[Columns.VERSION];
       return {
         name,
