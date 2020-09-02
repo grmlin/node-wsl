@@ -1,11 +1,12 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#4C1A45",
-        "titleBar.activeBackground": "#6B2460",
-        "titleBar.activeForeground": "#FDF8FC"
-    },
-    "xo.enable": true,
-    "xo.format.enable": true,
-    "debug.node.autoAttach": "on",
-    "editor.tabSize": 2
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#4C1A45",
+    "titleBar.activeBackground": "#6B2460",
+    "titleBar.activeForeground": "#FDF8FC"
+  },
+  "xo.enable": true,
+  "xo.format.enable": true,
+  "debug.node.autoAttach": "on",
+  "editor.tabSize": 2,
+  "files.eol": "\n"
 }

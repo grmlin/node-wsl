@@ -1,0 +1,100 @@
+name: NPM publish
+
+on: [ workflow_dispatch ]
+jobs:
+  build:
+    name: build the project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: library-dist
+          path: dist
+
+  test:
+    needs: build
+    name: run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm test -- --coverage
+      - uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage
+          path: coverage
+
+  docs:
+    name: create the docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm run docs
+      - uses: actions/upload-artifact@v2
+        with:
+          name: library-docs
+          path: docs
+  publish:
+    needs: [ build, test, docs ]
+    name: publish the release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - uses: actions/download-artifact@v2
+        with:
+          name: library-dist
+          path: dist
+      - uses: actions/download-artifact@v2
+        with:
+          name: code-coverage
+          path: coverage
+      - uses: actions/download-artifact@v2
+        with:
+          name: library-docs
+          path: docs
+      - run: npm ci
+      - run: npm run release
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Codecov
+        uses: codecov/codecov-action@v1.0.13
+        with:
+          name: node-wsl
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+          path_to_write_report: ./coverage/codecov_report.gz
+          fail_ci_if_error: true
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: |
+          git config user.name grmlin
+          git config user.email iam@grml.in
+          git push
+
