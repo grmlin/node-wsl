@@ -1,0 +1,300 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>node-wsl - v2.0.0</title>
+	<meta name="description" content="Documentation for node-wsl - v2.0.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">node-wsl - v2.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>node-wsl - v2.0.0</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#node-wsl" id="node-wsl" style="color: inherit; text-decoration: none;">
+					<h1>node-wsl</h1>
+				</a>
+				<p><a href="https://travis-ci.com/grmlin/node-wsl"><img src="https://img.shields.io/travis/grmlin/node-wsl.svg" alt="build status"></a>
+					<a href="https://codecov.io/gh/grmlin/node-wsl"><img src="https://img.shields.io/codecov/c/github/grmlin/node-wsl.svg" alt="code coverage"></a>
+					<a href="https://github.com/eslint/eslint"><img src="https://img.shields.io/badge/code_style-eslint-5ed9c7.svg" alt="code style"></a>
+					<a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier"></a>
+					<a href="LICENSE"><img src="https://img.shields.io/github/license/grmlin/node-wsl.svg" alt="license"></a>
+				<a href="https://npm.im/node-wsl"><img src="https://img.shields.io/npm/dt/node-wsl.svg" alt="npm downloads"></a></p>
+				<blockquote>
+					<p>A wrapper for the Windows Subsystem for Linux (WSL) cli</p>
+				</blockquote>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<p><a href="https://docs.microsoft.com/windows/wsl/">wsl</a>:</p>
+				<p>You&#39;ll need Windows with WSL 2 to use this library. <code>node-wsl</code> uses <code>wsl.exe</code> under the hood.</p>
+				<blockquote>
+					<p><strong>⚠️ if Microsoft changes the <code>wsl.exe</code> interface with a future update, this package will probly break!</strong></p>
+				</blockquote>
+				<p><a href="https://www.npmjs.com/">npm</a>:</p>
+				<pre><code class="language-sh">npm install node-wsl</code></pre>
+				<p><a href="https://yarnpkg.com/">yarn</a>:</p>
+				<pre><code class="language-sh">yarn add node-wsl</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> { status } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;node-wsl&#x27;</span>);
+
+<span class="hljs-keyword">const</span> status = <span class="hljs-keyword">await</span> status();
+assert.deepEqual(status, {
+    <span class="hljs-attr">distributions</span>: [
+     {
+       <span class="hljs-attr">default</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">running</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">stopped</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ubuntu&#x27;</span>,
+       <span class="hljs-attr">state</span>: <span class="hljs-string">&#x27;Running&#x27;</span>,
+       <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+     },
+     {
+       <span class="hljs-attr">default</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">running</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">stopped</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;kali-linux&#x27;</span>,
+       <span class="hljs-attr">state</span>: <span class="hljs-string">&#x27;Stopped&#x27;</span>,
+       <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+     },
+     {
+       <span class="hljs-attr">default</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">running</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">stopped</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Debian&#x27;</span>,
+       <span class="hljs-attr">state</span>: <span class="hljs-string">&#x27;Running&#x27;</span>,
+       <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+     },
+    ],
+    <span class="hljs-attr">runningDistributions</span>: [
+     {
+       <span class="hljs-attr">default</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">running</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">stopped</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ubuntu&#x27;</span>,
+       <span class="hljs-attr">state</span>: <span class="hljs-string">&#x27;Running&#x27;</span>,
+       <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+     },
+     {
+       <span class="hljs-attr">default</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">running</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">stopped</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Debian&#x27;</span>,
+       <span class="hljs-attr">state</span>: <span class="hljs-string">&#x27;Running&#x27;</span>,
+       <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+     },
+    ],
+    <span class="hljs-attr">stoppedDistributions</span>: [
+     {
+       <span class="hljs-attr">default</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">running</span>: <span class="hljs-literal">false</span>,
+       <span class="hljs-attr">stopped</span>: <span class="hljs-literal">true</span>,
+       <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;kali-linux&#x27;</span>,
+       <span class="hljs-attr">state</span>: <span class="hljs-string">&#x27;Stopped&#x27;</span>,
+       <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+     },
+    ],
+    <span class="hljs-attr">defaultDistribution</span>: {
+     <span class="hljs-attr">default</span>: <span class="hljs-literal">true</span>,
+     <span class="hljs-attr">running</span>: <span class="hljs-literal">true</span>,
+     <span class="hljs-attr">stopped</span>: <span class="hljs-literal">false</span>,
+     <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ubuntu&#x27;</span>,
+     <span class="hljs-attr">state</span>: <span class="hljs-string">&#x27;Running&#x27;</span>,
+     <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+    },
+    <span class="hljs-attr">total</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">running</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">stopped</span>: <span class="hljs-number">1</span>,
+});
+</code></pre>
+				<hr>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h2>API</h2>
+				</a>
+				<blockquote>
+					<p>⚠️ <strong>execa does not use a shell by default. So features like variable substitution will not work without specifying a shell</strong></p>
+				</blockquote>
+				<hr>
+				<a href="#contributors" id="contributors" style="color: inherit; text-decoration: none;">
+					<h2>Contributors</h2>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Website</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td><strong>Andreas Wehr</strong></td>
+							<td><a href="https://github.com/grmlin">https://github.com/grmlin</a></td>
+						</tr>
+				</tbody></table>
+				<a href="#faq" id="faq" style="color: inherit; text-decoration: none;">
+					<h2>FAQ</h2>
+				</a>
+				<ul>
+					<li><strong>WSL fails because a path/file was not found</strong>
+					That probably if you some form of variable substitution in a path, eg. <code>~/backup.tar</code>, without specifying a shell for <code>execa</code>. Check the <a href="https://github.com/sindresorhus/execa/blob/master/readme.md#execafile-arguments-options">execa documentation</a> for a detailed explanation.</li>
+				</ul>
+				<a href="#windows-compatibility" id="windows-compatibility" style="color: inherit; text-decoration: none;">
+					<h2>Windows Compatibility</h2>
+				</a>
+				<p><code>node-wsl</code> was tested with the following versions of Windows</p>
+				<table>
+					<thead>
+						<tr>
+							<th>Version</th>
+							<th>Build</th>
+							<th>tested</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td>2004</td>
+							<td>19041.450</td>
+							<td>:white_check_mark:</td>
+						</tr>
+				</tbody></table>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p><a href="LICENSE">MIT</a> © <a href="https://github.com/grmlin">Andreas Wehr</a></p>
+				<p>##</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_exportdistribution_.html">&quot;commands/export<wbr>Distribution&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_importdistribution_.html">&quot;commands/import<wbr>Distribution&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_list_.html">&quot;commands/list&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_run_.html">&quot;commands/run&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_setdefault_.html">&quot;commands/set<wbr>Default&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_setversion_.html">&quot;commands/set<wbr>Version&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_shutdown_.html">&quot;commands/shutdown&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_terminate_.html">&quot;commands/terminate&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_commands_unregister_.html">&quot;commands/unregister&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_status_status_.html">&quot;status/status&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_status_statusfactory_.html">&quot;status/status<wbr>Factory&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_status_statusparser_.html">&quot;status/status<wbr>Parser&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_types_.html">&quot;types&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_wsl_.html">&quot;wsl&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
