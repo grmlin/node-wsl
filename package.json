@@ -68,7 +68,7 @@
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test jest",
     "lint": "eslint .",
-    "prerelease": "git-branch-is master",
+    "prerelease": "git-branch-is master && npm test",
     "release": "standard-version",
     "docs": "typedoc source"
   },
