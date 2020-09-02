@@ -15,8 +15,6 @@
 
 You'll need Windows with WSL 2 to use this library. `node-wsl` uses `wsl.exe` under the hood.
 
-> **⚠️ if Microsoft changes the `wsl.exe` interface with a future update, this package will probly break!**
-
 [npm][]:
 
 ```sh
@@ -114,8 +112,10 @@ assert.deepEqual(status, {
 ## API
 
 > ⚠️ **execa does not use a shell by default. So features like variable substitution will not work without specifying a shell**
+>
+> ⚠️ **if Microsoft changes the `wsl.exe` interface with a future update, this package will probly break!**
 
-
+complete api docs can be found at: [https://grmlin.github.io/node-wsl](https://grmlin.github.io/node-wsl/)
 
 -------
 
@@ -157,3 +157,6 @@ assert.deepEqual(status, {
 [yarn]: https://yarnpkg.com/
 
 [execa-documentation]: https://github.com/sindresorhus/execa/blob/master/readme.md#execafile-arguments-options "execa documentation"
+
+
+[]: https://grmlin.github.io/node-wsl
