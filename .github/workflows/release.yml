@@ -64,23 +64,23 @@ jobs:
           name: library-dist
           path: dist
       - uses: actions/download-artifact@v2
-          with:
-            name: code-coverage
-            path: coverage
+        with:
+          name: code-coverage
+          path: coverage
       - uses: actions/download-artifact@v2
-          with:
-            name: library-docs
-            path: docs
+        with:
+          name: library-docs
+          path: docs
       - run: npm ci
       - run: npm run release
       - name: Deploy to GitHub Pages
-          if: success()
-          uses: crazy-max/ghaction-github-pages@v2
-          with:
-            target_branch: gh-pages
-            build_dir: docs
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Codecov
         uses: codecov/codecov-action@v1.0.13
         with:
@@ -90,8 +90,8 @@ jobs:
           path_to_write_report: ./coverage/codecov_report.gz
           fail_ci_if_error: true
       - run: npm publish
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: |
           git config user.name grmlin
           git config user.email iam@grml.in
