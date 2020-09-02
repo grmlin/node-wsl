@@ -55,10 +55,6 @@ jobs:
     name: publish the release
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          git config user.name grmlin
-          git config user.email iam@grml.in
-          git push
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
@@ -77,6 +73,10 @@ jobs:
         with:
           name: library-docs
           path: docs
+      - run: |
+          git config user.name grmlin
+          git config user.email iam@grml.in
+          git push
       - run: npm ci
       - run: npm run release
       - name: Deploy to GitHub Pages
