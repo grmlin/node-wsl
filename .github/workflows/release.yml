@@ -4,15 +4,12 @@ jobs:
   build:
     name: build the project
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 12.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+      - uses: actions/setup-node@v1
+          with:
+            node-version: 12
+            registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build
       - uses: actions/upload-artifact@v2
@@ -24,15 +21,12 @@ jobs:
     needs: build
     name: run tests
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 10.x, 12.x, 14.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+      - uses: actions/setup-node@v1
+          with:
+            node-version: 12
+            registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm test -- --coverage
       - uses: actions/upload-artifact@v2
@@ -43,15 +37,12 @@ jobs:
   docs:
     name: create the docs
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 12.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+      - uses: actions/setup-node@v1
+          with:
+            node-version: 12
+            registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run docs
       - uses: actions/upload-artifact@v2
@@ -62,16 +53,12 @@ jobs:
     needs: [ build, test, docs ]
     name: publish the release
     runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          node-version: [ 12.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: https://registry.npmjs.org/
+      - uses: actions/setup-node@v1
+          with:
+            node-version: 12
+            registry-url: https://registry.npmjs.org/
       - uses: actions/download-artifact@v2
         with:
           name: library-dist
