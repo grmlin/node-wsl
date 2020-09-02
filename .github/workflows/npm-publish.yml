@@ -55,11 +55,16 @@ jobs:
     name: publish the release
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          git config user.name grmlin
+          git config user.email iam@grml.in
+          git push
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+
       - uses: actions/download-artifact@v2
         with:
           name: library-dist
@@ -93,8 +98,4 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - run: |
-          git config user.name grmlin
-          git config user.email iam@grml.in
-          git push
 
