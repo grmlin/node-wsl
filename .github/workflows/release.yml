@@ -7,9 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: https://registry.npmjs.org/
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build
       - uses: actions/upload-artifact@v2
@@ -24,9 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: https://registry.npmjs.org/
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm test -- --coverage
       - uses: actions/upload-artifact@v2
@@ -40,9 +40,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: https://registry.npmjs.org/
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run docs
       - uses: actions/upload-artifact@v2
@@ -56,9 +56,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: https://registry.npmjs.org/
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
       - uses: actions/download-artifact@v2
         with:
           name: library-dist
